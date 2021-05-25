@@ -1,0 +1,78 @@
+button {
+    background: none;
+}
+
+
+.OuterListWrapper {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 8px
+}
+
+.ProductsListHeader {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    padding: 0px 8px 8px;
+}
+
+.ProductsListToggler {
+    text-decoration: none;
+    background: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 17px 8px;
+    flex: 1 1 auto;
+    cursor: pointer;
+    color: rgb(166, 166, 166);
+    border: 1px solid rgba(255, 255, 255, 0);
+    outline: 0px;
+}
+
+.ProductsListToggler:hover {
+    color: rgb(255, 255, 255);
+}
+
+a {
+    color: #449d2f;
+}
+
+.ProductsListName {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height: 6px;
+}
+
+.ProductsListNameTitle {
+    margin-right: 4px;
+}
+
+.ThemedIcon {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+    flex: 0 0 24px;
+}
+
+.ThemedIcon svg{
+    opacity: 0.47;
+    display: block;
+    fill: rgb(214, 214, 214);
+}
+
+/*.Collapse {*/
+/*    max-height: 100%;*/
+/*    transition: all 250ms ease 0s;*/
+/*}*/
+
+.ProductsListWrapper {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(44, 44, 44);
+}
+

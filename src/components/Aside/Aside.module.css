@@ -1,0 +1,121 @@
+.aside {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 320px;
+    flex: 0 1 320px;
+    width: 320px;
+    position: relative;
+    z-index: 1000;
+    height: 100vh;
+    overflow: visible;
+    box-shadow: none;
+}
+
+.personalMenuSlideWrapper {
+    position: static;
+    width: 320px;
+    height: 100%;
+    z-index: 2;
+}
+
+.personalMenu {
+    display: flex;
+    position: fixed;
+    overflow: hidden;
+    flex-direction: column;
+    width: 320px;
+    box-shadow: rgb(45 73 88 / 15%) 0px 12px 24px 0px;
+    top: 0px;
+    bottom: 0px;
+    opacity: 0.999;
+    background: rgb(44, 44, 44);
+}
+
+.profileHeader {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.profileLink {
+    border-radius: 50%;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.08);
+    width: 64px;
+    height: 64px;
+    margin: 0px 24px;
+    display: block;
+    position: relative;
+    padding: 0px;
+}
+
+.profileLinkCircle {
+    border-radius: 50%;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    font-size: 28px;
+    background-color: rgb(30, 122, 122);
+}
+
+.profileInitials {
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+}
+
+.profileInfo {
+    text-align: center;
+    margin-top: 8px;
+    padding: 0px 18px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center
+}
+
+.profileName {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 0px 4px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0);
+    outline: 0px;
+    color: rgb(255, 255, 255);
+}
+
+.profileDescription {
+    font-size: 14px;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+    margin: 0px auto;
+    padding: 0px 4px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    outline: 0px;
+    color: rgb(166, 166, 166);
+}
+
+.products {
+    margin: 40px 0px 100%;
+    flex: 1 0 0px;
+    list-style: none;
+    padding: 0px;
+}

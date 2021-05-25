@@ -1,0 +1,33 @@
+.ProductListItem {
+    position: relative;
+}
+
+.SingleProductLink {
+    background: rgb(77, 77, 77);
+    display: flex;
+    align-items: flex-start;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0);
+    outline: 0px;
+}
+
+.ProductIcon {
+    margin-right: 15px;
+    margin-top: 4px;
+    position: relative;
+    min-width: 36px;
+    z-index: 2;
+}
+
+.Icon {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.ProductInfo {
+    flex: 1 0 auto;
+    align-self: center;
+    overflow: hidden;
+}
