@@ -40,6 +40,7 @@ html,body{
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  font: 14px/1.3 SBSans,Arial,Helvetica,sans-serif;
 }
 input,button,textarea{font-family:inherit;}
 

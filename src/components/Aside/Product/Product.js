@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Transition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import classes from './Product.module.css'
 import ProductNew from "../ProductNew/ProductNew";
 import ProductListItem from "./ProductListItem/ProductListItem";
@@ -14,7 +14,7 @@ const products = [
     }
 ]
 
-const Product = ({name}) => {
+const Product = ({name, index}) => {
     const [collapse, setCollapse] = useState(false)
 
     return (
@@ -34,47 +34,28 @@ const Product = ({name}) => {
                 </button>
                 <ProductNew/>
             </div>
-            <Transition
+            <CSSTransition
                 in={collapse}
                 timeout={100}
                 mountOnEnter
                 unmountOnExit
                 classNames={collapseTransitions}
             >
-                {state => {
-                    // let blockStyle = {
-                    //     maxHeight: 0,
-                    //     transition: 'max-height 2500ms ease 0s'
-                    // }
-                    // console.log(state)
-                    // if(state === 'entered') {
-                    //     blockStyle = {
-                    //         maxHeight: '100%',
-                    //         transition: 'max-height 2500ms ease 0s'
-                    //     }
-                    // }
-                    // if(state === 'exiting') {
-                    //     blockStyle = {
-                    //         maxHeight: '100%',
-                    //         transition: 'max-height 2500ms ease 0s'
-                    //     }
-                    // }
-                    // if(state === 'exited') {
-                    //     blockStyle = {
-                    //         maxHeight: 0
-                    //     }
-                    // }
-                    return(
+                {state =>
                     <div>
                         <div>
                             <ul className={classes.ProductsListWrapper}>
-                                {products.map((element, index) => <ProductListItem key={index} name={element.name}/>)}
+                                {index === 0 && products.map((element, index) =>
+                                    <ProductListItem key={index}
+                                                     name={element.name}
+                                                     balance={element.balance}
+                                                     number={element.number}/>
+                                    )}
                             </ul>
                         </div>
-                    </div>)
+                    </div>
                 }
-                }
-            </Transition>
+            </CSSTransition>
         </li>
     );
 };
