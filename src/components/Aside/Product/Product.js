@@ -4,9 +4,11 @@ import classes from './Product.module.css'
 import ProductNew from "../ProductNew/ProductNew";
 import ProductListItem from "./ProductListItem/ProductListItem";
 import collapseTransitions from './collapse.module.css'
+import Arrow from "../../Arrow/Arrow";
 
 const products = [
     {
+        id: 1,
         type: 'card',
         name: 'Visa Classic',
         number: '6346',
@@ -16,20 +18,17 @@ const products = [
 
 const Product = ({name, index}) => {
     const [collapse, setCollapse] = useState(false)
-
+    const clickHandler = () => {
+        if(products)
+            setCollapse(!collapse)
+    }
     return (
         <li className={classes.OuterListWrapper}>
             <div className={classes.ProductsListHeader}>
-                <button className={classes.ProductsListToggler} onClick={() => setCollapse(!collapse)}>
+                <button className={classes.ProductsListToggler} onClick={() => clickHandler()}>
                     <div className={classes.ProductsListName}>
                         <span className={classes.ProductsListNameTitle}>{name}</span>
-                        <span className={classes.ThemedIcon}>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path
-                                fillRule="evenodd"
-                                d="M15.293 9.883c.39-.39 1.024-.39 1.414 0 .39.39.39 1.024 0 1.414L12 16.004l-4.707-4.707c-.39-.39-.39-1.024 0-1.414.39-.39 1.024-.39 1.414 0L12 13.176l3.293-3.293z"></path>
-                            </svg>
-                        </span>
+                        <Arrow isOpen={collapse} />
                     </div>
                 </button>
                 <ProductNew/>
@@ -49,7 +48,9 @@ const Product = ({name, index}) => {
                                     <ProductListItem key={index}
                                                      name={element.name}
                                                      balance={element.balance}
-                                                     number={element.number}/>
+                                                     number={element.number}
+                                                     id={element.id}
+                                    />
                                     )}
                             </ul>
                         </div>

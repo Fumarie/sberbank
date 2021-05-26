@@ -1,0 +1,12 @@
+.ThemedIcon {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+    flex: 0 0 24px;
+}
+
+.ThemedIcon svg{
+    opacity: 0.47;
+    display: block;
+    fill: rgb(214, 214, 214);
+}
