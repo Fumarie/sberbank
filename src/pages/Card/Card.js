@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from "../../components/Main/Header/Header";
 
-const Mail = (props) => {
+const Card = (props) => {
     return (
         <div>
-            <Header path={props.match.path} />
-          Here are your mails
+            <Header />
+            Card with id {props.match.params.id}
         </div>
     );
 };
 
-export default Mail;
+export default Card;

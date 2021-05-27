@@ -13,7 +13,21 @@ const products = [
         name: 'Visa Classic',
         number: '6346',
         balance: 1458.85
-    }
+    },
+    {
+        id: 2,
+        type: 'card',
+        name: 'Mastercard',
+        number: '1654',
+        balance: 145558.85
+    },
+    {
+        id: 3,
+        type: 'card',
+        name: 'Visa platinum',
+        number: '9855',
+        balance: 100
+    },
 ]
 
 const Product = ({name, index}) => {
@@ -23,7 +37,7 @@ const Product = ({name, index}) => {
             setCollapse(!collapse)
     }
     return (
-        <li className={classes.OuterListWrapper}>
+        <li className={classes.OuterListWrapper} style={{zIndex: 2}}>
             <div className={classes.ProductsListHeader}>
                 <button className={classes.ProductsListToggler} onClick={() => clickHandler()}>
                     <div className={classes.ProductsListName}>
@@ -40,8 +54,11 @@ const Product = ({name, index}) => {
                 unmountOnExit
                 classNames={collapseTransitions}
             >
-                {state =>
-                    <div>
+                {state => {
+                    let styles = {maxHeight: 0, zIndex: 1, overflow: 'hidden', transition: 'all .25s ease'}
+                    if(state === 'entered') styles = { ...styles, maxHeight: products.length * 62}
+                    return(
+                    <div style={styles}>
                         <div>
                             <ul className={classes.ProductsListWrapper}>
                                 {index === 0 && products.map((element, index) =>
@@ -51,10 +68,11 @@ const Product = ({name, index}) => {
                                                      number={element.number}
                                                      id={element.id}
                                     />
-                                    )}
+                                )}
                             </ul>
                         </div>
-                    </div>
+                    </div>)
+                }
                 }
             </CSSTransition>
         </li>

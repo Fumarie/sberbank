@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from "../../components/Main/Header/Header";
 
-const Mail = (props) => {
+const Operations = (props) => {
     return (
         <div>
             <Header path={props.match.path} />
-          Here are your mails
+            THere are your operations
         </div>
     );
 };
 
-export default Mail;
+export default Operations;

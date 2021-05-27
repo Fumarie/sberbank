@@ -2,13 +2,13 @@ import React from 'react';
 import classes from './ProductListItem.module.css'
 import { ReactSVG } from 'react-svg'
 import card from '../../../../images/card.svg'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 const ProductListItem = ({name, balance, number, id}) => {
     return (
         <li className={classes.ProductListItem}>
             <div className="ProductContainer">
-                <Link to={`card/${id}`} className={classes.SingleProductLink}>
+                <Link to={{pathname: `/card/${id}`}} className={classes.SingleProductLink}>
                     <div className={classes.ProductIcon}>
                         <span className={classes.Icon}>
                             <ReactSVG src={card} />
@@ -19,7 +19,7 @@ const ProductListItem = ({name, balance, number, id}) => {
                             <span className={classes.Name}>{name}</span>
                             <span>
                                 <span className={classes.Balance}>{balance}</span>
-                                <span>₽</span>
+                                <span> ₽</span>
                             </span>
                         </span>
                         <span className={classes.ContentRow2}>

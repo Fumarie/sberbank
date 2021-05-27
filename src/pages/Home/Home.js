@@ -1,8 +1,10 @@
 import React from 'react';
+import Header from "../../components/Main/Header/Header";
 
-const Home = () => {
+const Home = (props) => {
     return (
         <div>
+            <Header path={props.match.path}/>
             Home page
         </div>
     );
