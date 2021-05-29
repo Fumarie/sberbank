@@ -3,14 +3,11 @@ import classes from './Aside.module.css'
 import ProfileIcon from "./ProfileIcon/ProfileIcon";
 import Product from "./Product/Product";
 import {Link} from "react-router-dom";
-
-const profile = {
-    name: 'Леонид',
-    initials: 'ЛВ'
-}
-const productsNames = ['Карты', 'Вклады и счета', 'Кредиты', 'Оплатить счёт']
+import { useSelector } from "react-redux";
 
 const Aside = () => {
+    const { productsTypes } = useSelector(state => state.products)
+    const { profile } = useSelector(state => state.profile)
     return (
         <aside className={classes.aside}>
             <div className={classes.personalMenuSlideWrapper}>
@@ -35,7 +32,7 @@ const Aside = () => {
                         </div>
                     </div>
                     <ul className={classes.products}>
-                        {productsNames.map((name, i) => <Product name={name} key={i} index={i} />)}
+                        {productsTypes.map((elem, index) => <Product name={elem.name} products={elem.products} key={index} />)}
                     </ul>
                 </div>
             </div>

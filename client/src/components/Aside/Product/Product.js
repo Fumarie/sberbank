@@ -2,35 +2,12 @@ import React, { useState } from 'react';
 import { CSSTransition } from "react-transition-group";
 import classes from './Product.module.css'
 import ProductNew from "../ProductNew/ProductNew";
-import ProductListItem from "./ProductListItem/ProductListItem";
 import collapseTransitions from './collapse.module.css'
 import Arrow from "../../Arrow/Arrow";
+import ProductsList from "./ProductsList/ProductsList";
 
-const products = [
-    {
-        id: 1,
-        type: 'card',
-        name: 'Visa Classic',
-        number: '6346',
-        balance: 1458.85
-    },
-    {
-        id: 2,
-        type: 'card',
-        name: 'Mastercard',
-        number: '1654',
-        balance: 145558.85
-    },
-    {
-        id: 3,
-        type: 'card',
-        name: 'Visa platinum',
-        number: '9855',
-        balance: 100
-    },
-]
 
-const Product = ({name, index}) => {
+const Product = ({name, products}) => {
     const [collapse, setCollapse] = useState(false)
     const clickHandler = () => {
         if(products)
@@ -58,20 +35,10 @@ const Product = ({name, index}) => {
                     let styles = {maxHeight: 0, zIndex: 1, overflow: 'hidden', transition: 'all .25s ease'}
                     if(state === 'entered') styles = { ...styles, maxHeight: products.length * 62}
                     return(
-                    <div style={styles}>
-                        <div>
-                            <ul className={classes.ProductsListWrapper}>
-                                {index === 0 && products.map((element, index) =>
-                                    <ProductListItem key={index}
-                                                     name={element.name}
-                                                     balance={element.balance}
-                                                     number={element.number}
-                                                     id={element.id}
-                                    />
-                                )}
-                            </ul>
+                        <div style={styles}>
+                            <ProductsList name={name} products={products} />
                         </div>
-                    </div>)
+                    )
                 }
                 }
             </CSSTransition>
