@@ -3,9 +3,15 @@ import classes from './ProductCardItem.module.css'
 import { ReactSVG } from 'react-svg'
 import card from '../../../../images/card.svg'
 import { Link } from 'react-router-dom'
+import ProductSeparator from "../ProductSeparator/ProductSeparator";
 
 const ProductCardItem = ({ product }) => {
-    const {name, balance, number, id} = product
+    let {name, balance, number, id} = product
+    console.log(product)
+    balance = Number(balance).toFixed(2)
+    number.split('')
+    const normalNumber = `${number[12] + number[13] + number[14] + number[15]}`
+
     return (
         <li className={classes.ProductListItem}>
             <div className="ProductContainer">
@@ -24,11 +30,11 @@ const ProductCardItem = ({ product }) => {
                             </span>
                         </span>
                         <span className={classes.ContentRow2}>
-                            <span>•• {number}</span>
+                            <span>•• {normalNumber}</span>
                         </span>
                     </div>
                 </Link>
-                <hr style={{border: 0}}/>
+                <ProductSeparator />
             </div>
         </li>
     );

@@ -1,0 +1,9 @@
+.Separator {
+    height: 0px;
+    overflow: hidden;
+    margin: 8px 0px 8px 60px;
+    padding: 0px;
+    border-width: 1px 0px 0px;
+    border-top-style: solid;
+    border-color: rgba(255, 255, 255, 0.08);
+}

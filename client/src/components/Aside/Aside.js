@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Aside.module.css'
 import ProfileIcon from "./ProfileIcon/ProfileIcon";
 import Product from "./Product/Product";
 import {Link} from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../redux/actions/profile";
+import { getUserCards } from "../../redux/actions/products";
 
 const Aside = () => {
-    const { productsTypes } = useSelector(state => state.products)
+    const products = ['Карты', 'Вклады и счета', 'Кредиты', 'Оплатить счёт']
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUser(6))
+    }, []);
+
     const { profile } = useSelector(state => state.profile)
     return (
         <aside className={classes.aside}>
@@ -32,7 +41,7 @@ const Aside = () => {
                         </div>
                     </div>
                     <ul className={classes.products}>
-                        {productsTypes.map((elem, index) => <Product name={elem.name} products={elem.products} key={index} />)}
+                        {products.map((elem, index) => <Product name={elem} key={index} />)}
                     </ul>
                 </div>
             </div>

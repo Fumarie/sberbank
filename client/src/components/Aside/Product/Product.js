@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CSSTransition } from "react-transition-group";
 import classes from './Product.module.css'
 import ProductNew from "../ProductNew/ProductNew";
 import collapseTransitions from './collapse.module.css'
 import Arrow from "../../Arrow/Arrow";
 import ProductsList from "./ProductsList/ProductsList";
+import { getUserCards } from "../../../redux/actions/products";
+import { useDispatch, useSelector } from "react-redux";
 
-
-const Product = ({name, products}) => {
+const Product = ({name}) => {
+    const dispatch = useDispatch()
     const [collapse, setCollapse] = useState(false)
+
+    const {cards} = useSelector(state => state.products)
+    const {id} = useSelector(state => state.profile.profile)
+
+    console.log(cards)
     const clickHandler = () => {
-        if(products)
+            if(!collapse) {
+                switch (name) {
+                    case 'Карты':
+                    {
+                        if(id)
+                            dispatch(getUserCards(id))
+                    }
+                }
+            }
             setCollapse(!collapse)
     }
     return (
@@ -32,13 +47,15 @@ const Product = ({name, products}) => {
                 classNames={collapseTransitions}
             >
                 {state => {
-                    let styles = {maxHeight: 0, zIndex: 1, overflow: 'hidden', transition: 'all .25s ease'}
-                    if(state === 'entered') styles = { ...styles, maxHeight: products.length * 62}
-                    return(
-                        <div style={styles}>
-                            <ProductsList name={name} products={products} />
-                        </div>
-                    )
+                    if(cards){
+                        let styles = {maxHeight: 0, zIndex: 1, overflow: 'hidden', transition: 'all .25s ease'}
+                        if(state === 'entered') styles = { ...styles, maxHeight: (cards.length * 62) + ((cards.length) * 17) - 9}
+                        return(
+                            <div style={styles}>
+                                <ProductsList name={name} />
+                            </div>
+                        )
+                    }
                 }
                 }
             </CSSTransition>

@@ -3,6 +3,7 @@ import classes from "../ProductCardItem/ProductCardItem.module.css";
 import { Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import depositSVG from "../../../../images/deposit.svg";
+import ProductSeparator from "../ProductSeparator/ProductSeparator";
 
 const ProductDepositItem = ({product}) => {
     const {id, number, balance} = product
@@ -28,7 +29,7 @@ const ProductDepositItem = ({product}) => {
                         </span>
                     </div>
                 </Link>
-                <hr style={{border: 0}}/>
+                <ProductSeparator />
             </div>
         </li>
     );

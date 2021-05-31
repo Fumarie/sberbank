@@ -3,13 +3,16 @@
 }
 
 .SingleProductLink {
-    background: rgb(77, 77, 77);
     display: flex;
     align-items: flex-start;
     padding: 8px 12px;
     text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0);
     outline: 0px;
+}
+
+.SingleProductLink:hover {
+    background: rgb(77, 77, 77);
 }
 
 .ProductIcon {
