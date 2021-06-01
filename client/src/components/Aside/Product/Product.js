@@ -15,26 +15,25 @@ const Product = ({name}) => {
     const {cards} = useSelector(state => state.products)
     const {id} = useSelector(state => state.profile.profile)
 
-    console.log(cards)
-    const clickHandler = () => {
-            if(!collapse) {
-                switch (name) {
-                    case 'Карты':
-                    {
-                        if(id)
-                            dispatch(getUserCards(id))
-                    }
+    const clickHandler = async () => {
+        setCollapse(!collapse)
+        if (!collapse) {
+            switch (name) {
+                case 'Карты': {
+                    if (id)
+                        await dispatch(getUserCards(id))
                 }
             }
-            setCollapse(!collapse)
+        }
     }
+
     return (
         <li className={classes.OuterListWrapper} style={{zIndex: 2}}>
             <div className={classes.ProductsListHeader}>
                 <button className={classes.ProductsListToggler} onClick={() => clickHandler()}>
                     <div className={classes.ProductsListName}>
                         <span className={classes.ProductsListNameTitle}>{name}</span>
-                        <Arrow isOpen={collapse} />
+                        <Arrow isOpen={collapse}/>
                     </div>
                 </button>
                 <ProductNew/>
@@ -47,17 +46,21 @@ const Product = ({name}) => {
                 classNames={collapseTransitions}
             >
                 {state => {
-                    if(cards){
-                        let styles = {maxHeight: 0, zIndex: 1, overflow: 'hidden', transition: 'all .25s ease'}
-                        if(state === 'entered') styles = { ...styles, maxHeight: (cards.length * 62) + ((cards.length) * 17) - 9}
-                        return(
-                            <div style={styles}>
-                                <ProductsList name={name} />
-                            </div>
-                        )
+                    let styles = {maxHeight: 0, zIndex: 1, overflow: 'hidden', transition: 'all .25s ease'}
+                    switch (name) {
+                        case 'Карты': {
+                            if (state === 'entered') styles = {
+                                ...styles,
+                                maxHeight: cards ? ((cards.length * 62) + ((cards.length) * 17) - 9) : 70
+                            }
+                            return (
+                                <div style={styles}>
+                                    <ProductsList name={name}/>
+                                </div>
+                            )
+                        }
                     }
-                }
-                }
+                }}
             </CSSTransition>
         </li>
     );

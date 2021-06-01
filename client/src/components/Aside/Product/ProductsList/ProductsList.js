@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from "../Product.module.css";
 import CardList from "./CardList";
 
