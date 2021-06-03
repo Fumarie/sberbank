@@ -19,12 +19,15 @@ class AuthController {
             const {fio, phonenumber, email, birthdate, city, inn, password} = req.body
             console.log(fio, phonenumber, email, birthdate, city, inn, password)
             const candidate = await db.query('SELECT * FROM sber_user where email = $1', [email])
-            console.log(candidate.rows[0])
             if(candidate.rows[0])
                 return res.status(400).json({message: "Пользователь с таким email уже существует"})
             const hashPassword = bcrypt.hashSync(password, 5)
             const newUser = await db.query(`INSERT INTO sber_user (fio, phonenumber, email, birthdate, city, inn, password) values ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [fio, phonenumber, email, birthdate, city, inn, hashPassword])
-            res.json(newUser.rows[0])
+            if(newUser) {
+                console.log(newUser.rows[0].id_user)
+                const token = generateAccessToken(newUser.rows[0].id_user)
+                res.json({token, id: newUser.rows[0].id_user})
+            }
         } catch (e) {
             console.log(e)
             res.status(400).json({message: 'Registration error'})

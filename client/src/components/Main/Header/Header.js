@@ -16,7 +16,7 @@ const Header = ({path} ) => {
     const logoutHandler = event => {
         event.preventDefault()
         logout()
-        window.location.href = "/"
+        window.location.href = "/login"
     }
 
      return (

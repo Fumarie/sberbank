@@ -7,7 +7,6 @@ import { useRoutes } from "./routes/routes";
 function App() {
     const {login, logout, token, userId, ready} = useAuth()
     const isAuthenticated = !!token
-    console.log(isAuthenticated)
     const routes = useRoutes(isAuthenticated)
 
     return (

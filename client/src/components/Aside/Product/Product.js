@@ -37,7 +37,7 @@ const Product = ({name}) => {
                         <Arrow isOpen={collapse}/>
                     </div>
                 </button>
-                <ProductNew/>
+                <ProductNew name={name}/>
             </div>
             <CSSTransition
                 in={collapse}
