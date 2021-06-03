@@ -6,10 +6,19 @@ import exitSVG from '../../../images/exit.svg'
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import HeaderNavLink from "./HeaderNavLink/HeaderNavLink";
+import { useAuth } from "../../../hooks/auth.hook";
 
 const navLinks = [{name: 'Главная', link: '/'}, {name: 'Платежи', link: '/payments'}, {name: 'История', link: '/operations'}, {name: 'Каталог', link: '/catalog'}]
 
 const Header = ({path} ) => {
+    const {logout} = useAuth()
+
+    const logoutHandler = event => {
+        event.preventDefault()
+        logout()
+        window.location.href = "/"
+    }
+
      return (
         <header className={classes.header}>
             <div className={classes.headerWrapper}>
@@ -22,9 +31,9 @@ const Header = ({path} ) => {
                             navLinks.map((element, index) => <HeaderNavLink key={index} link={element.link} classes={classNames(classes.headerNavLink, {[classes.active]: path === element.link })}>{element.name}</HeaderNavLink>)
                         }
                     </nav>
-                    <Link to={'/'}>
+                    <button href="/login" onClick={logoutHandler}>
                         <ReactSVG src={exitSVG} />
-                    </Link>
+                    </button>
                 </div>
 
             </div>

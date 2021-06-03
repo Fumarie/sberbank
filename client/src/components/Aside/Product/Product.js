@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Product = ({name}) => {
     const dispatch = useDispatch()
     const [collapse, setCollapse] = useState(false)
+    console.log('collapse!!', collapse)
 
     const {cards} = useSelector(state => state.products)
     const {id} = useSelector(state => state.profile.profile)
@@ -51,7 +52,7 @@ const Product = ({name}) => {
                         case 'Карты': {
                             if (state === 'entered') styles = {
                                 ...styles,
-                                maxHeight: cards ? ((cards.length * 62) + ((cards.length) * 17) - 9) : 70
+                                maxHeight: cards ? ((cards.length * 60) + ((cards.length) * 17) - 9) : 0
                             }
                             return (
                                 <div style={styles}>

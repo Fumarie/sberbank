@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCardItem from "../ProductCardItem/ProductCardItem";
 import { useSelector } from "react-redux";
+
 const CardList = () => {
     const {cards} = useSelector(state => state.products)
     console.log('Card list', cards)

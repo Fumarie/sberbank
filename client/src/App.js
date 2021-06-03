@@ -1,17 +1,24 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Aside from "./components/Aside/Aside";
-import Main from "./components/Main";
+import { AuthContext } from "./context/AuthContext";
+import { useAuth } from "./hooks/auth.hook";
+import { useRoutes } from "./routes/routes";
 
 function App() {
-  return (
-    <div className="App">
-        <BrowserRouter>
-            <Aside />
-            <Main />
-        </BrowserRouter>
-    </div>
-  );
+    const {login, logout, token, userId, ready} = useAuth()
+    const isAuthenticated = !!token
+    console.log(isAuthenticated)
+    const routes = useRoutes(isAuthenticated)
+
+    return (
+        <AuthContext.Provider value={{login, logout, token, userId, isAuthenticated, ready}}>
+            <div className="App">
+                <BrowserRouter>
+                    {routes}
+                </BrowserRouter>
+            </div>
+        </AuthContext.Provider>
+    );
 }
 
 export default App;

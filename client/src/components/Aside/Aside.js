@@ -1,22 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classes from './Aside.module.css'
 import ProfileIcon from "./ProfileIcon/ProfileIcon";
 import Product from "./Product/Product";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../redux/actions/profile";
-import { getUserCards } from "../../redux/actions/products";
+import { AuthContext } from "../../context/AuthContext";
 
 const Aside = () => {
     const products = ['Карты', 'Вклады и счета', 'Кредиты', 'Оплатить счёт']
 
     const dispatch = useDispatch()
+    const {token, userId} = useContext(AuthContext)
+
+    console.log('token', token)
+    console.log('userId', userId)
 
     useEffect(() => {
-        dispatch(getUser(6))
+        dispatch(getUser(userId, token))
     }, []);
 
-    const { profile } = useSelector(state => state.profile)
+    const {profile} = useSelector(state => state.profile)
     return (
         <aside className={classes.aside}>
             <div className={classes.personalMenuSlideWrapper}>
@@ -25,23 +29,23 @@ const Aside = () => {
                         <div>
                             <div className={classes.profileHeader}>
                                 <ProfileIcon type="settings"/>
-                                    <Link className={classes.profileLink} to="/profile">
-                                        <div className={classes.profileLinkCircle}>
-                                            <div className={classes.profileInitials}>{profile.initials}</div>
-                                        </div>
-                                    </Link>
-                                <ProfileIcon type="mail" />
+                                <Link className={classes.profileLink} to="/profile">
+                                    <div className={classes.profileLinkCircle}>
+                                        <div className={classes.profileInitials}>{profile.initials}</div>
+                                    </div>
+                                </Link>
+                                <ProfileIcon type="mail"/>
                             </div>
                             <div className={classes.profileInfo}>
                                 <Link title="Леонид" className={classes.profileName}
-                                   to="/profile">{profile.name}</Link>
+                                      to="/profile">{profile.name}</Link>
                                 <Link className={classes.profileDescription}
-                                   to="/profile">Профиль</Link>
+                                      to="/profile">Профиль</Link>
                             </div>
                         </div>
                     </div>
                     <ul className={classes.products}>
-                        {products.map((elem, index) => <Product name={elem} key={index} />)}
+                        {products.map((elem, index) => <Product name={elem} key={index}/>)}
                     </ul>
                 </div>
             </div>

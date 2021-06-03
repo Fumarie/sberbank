@@ -1,0 +1,42 @@
+.CardName {
+    max-width: 100%;
+    vertical-align: bottom;
+    letter-spacing: -.5px;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 32px 0 0;
+}
+
+.cardPNG {
+    width: 60px;
+    height: 40px;
+    border-radius: 3px;
+    vertical-align: bottom;
+}
+
+.cardInfoRow {
+    margin-top: 28px;
+    display: flex;
+}
+
+.cardInfo {
+    color: #262626;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.8px;
+    font-weight: 400;
+}
+
+.balanceWrap {
+    margin-top: 32px;
+    margin-bottom: 48px;
+}
+
+.balance {
+    color: #494e53;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 700;
+    font-family: 'Source Serif Pro', serif;
+}
