@@ -6,6 +6,7 @@ import "./Login.css";
 import sberbankSVG from '../../images/logo.svg'
 import axios from "axios";
 import { useAuth } from "../../hooks/auth.hook";
+import { Link } from "react-router-dom";
 
 export default function Login(props) {
     console.log(props.match.params)
@@ -101,8 +102,9 @@ export default function Login(props) {
                             <Button variant="success" block size="lg" type="submit" disabled={!validateLogin()}>
                                 Login
                             </Button>
+                            <Link to={'/register'}>Нет аккаунта? Зарегистрируйтесь</Link>
                         </Form>
-                        : //REGISTRATION FORM
+                    : //REGISTRATION FORM
                         <Form onSubmit={handleRegister}>
                             <Form.Group size="lg" controlId="email">
                                 <Form.Label>Email</Form.Label>
@@ -170,7 +172,9 @@ export default function Login(props) {
                             </Form.Group>
                             <Button variant="success" block size="lg" type="submit" disabled={!validateRegister()}>
                                 Register
-                            </Button></Form>
+                            </Button>
+                            <Link to={'/login'}>Уже есть аккаунт? Войти</Link>
+                        </Form>
                 }
             </div>
         </div>

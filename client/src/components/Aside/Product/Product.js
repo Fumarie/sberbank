@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CSSTransition } from "react-transition-group";
 import classes from './Product.module.css'
 import ProductNew from "../ProductNew/ProductNew";
@@ -7,15 +7,17 @@ import Arrow from "../../Arrow/Arrow";
 import ProductsList from "./ProductsList/ProductsList";
 import { getUserCards } from "../../../redux/actions/products";
 import { useDispatch, useSelector } from "react-redux";
+import NoProducts from "./NoProducts/NoProducts";
 
 const Product = ({name}) => {
     const dispatch = useDispatch()
     const [collapse, setCollapse] = useState(false)
-    console.log('collapse!!', collapse)
 
     const {cards} = useSelector(state => state.products)
     const {id} = useSelector(state => state.profile.profile)
 
+
+    console.log('CARDS', cards)
     const clickHandler = async () => {
         setCollapse(!collapse)
         if (!collapse) {
@@ -52,11 +54,14 @@ const Product = ({name}) => {
                         case 'Карты': {
                             if (state === 'entered') styles = {
                                 ...styles,
-                                maxHeight: cards ? ((cards.length * 60) + ((cards.length) * 17) - 9) : 0
+                                maxHeight: cards.length ? ((cards.length * 60) + ((cards.length) * 17) - 9) : 70
                             }
                             return (
                                 <div style={styles}>
-                                    <ProductsList name={name}/>
+                                    {cards.length ?
+                                        <ProductsList name={name}/>
+                                        : <NoProducts />
+                                    }
                                 </div>
                             )
                         }
