@@ -18,6 +18,6 @@ router.put('/',
             check('phonenumber', "Номер должен состоять из 11 цифр").isLength({min: 11, max: 11}),
         ],
     userController.updateUser)
-// router.delete('/user/:id', userController.deleteUser)
+// router.delete('/:id', userController.deleteUser)
 
 module.exports = router

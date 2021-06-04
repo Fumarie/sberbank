@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const CardList = () => {
     const {cards} = useSelector(state => state.products)
-    console.log('Card list', cards)
     return (
         <>
             {cards && cards.map((element, index) => {

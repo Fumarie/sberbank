@@ -19,7 +19,13 @@ export const getUser = (id, token) => {
                 const profile = {
                     name: user.fio.split(' ')[1],
                     initials: `${user.fio.split(' ')[1].split('')[0]}${user.fio.split(' ')[0].split('')[0]}`,
-                    id: id
+                    id: id,
+                    fio: user.fio,
+                    phonenumber: user.phonenumber,
+                    email: user.email,
+                    birthdate: user.birthdate,
+                    city: user.city,
+                    inn: user.inn
                 }
                 dispatch({type: GET_USER, payload: profile})
                 console.log(user)

@@ -12,6 +12,8 @@ import Deposit from "../pages/Deposit/Deposit";
 import Login from "../pages/Login/Login";
 import Aside from "../components/Aside/Aside";
 import classes from "../components/Main/main.module.css";
+import NewCard from "../pages/NewCard/NewCard";
+import NewCardSelect from "../pages/NewCard/NewCardSelect";
 
 export const useRoutes = isAuthenticated => {
     return (
@@ -29,6 +31,8 @@ export const useRoutes = isAuthenticated => {
                         <Route path="/operations" exact component={Operations}/>
                         <Route path="/card/:id" exact component={Card}/>
                         <Route path="/deposit/:id" exact component={Deposit}/>
+                        <Route path="/new/card" exact component={NewCard}/>
+                        <Route path="/new/card/selected" exact component={NewCardSelect}/>
                         <Redirect to="/"/>
                     </main>
                 </>

@@ -7,7 +7,6 @@ import ProductSeparator from "../ProductSeparator/ProductSeparator";
 
 const ProductCardItem = ({ product }) => {
     let {name, balance, number, id} = product
-    console.log(product)
     balance = Number(balance).toFixed(2)
     number.split('')
     const normalNumber = `${number[12] + number[13] + number[14] + number[15]}`

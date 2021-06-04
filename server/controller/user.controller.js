@@ -4,15 +4,6 @@ const db = require('../db')
 const bcrypt = require('bcrypt')
 
 class UserController {
-    // async createUser (req, res) {
-    //     const {fio, phonenumber, email, birthdate, city, inn, password} = req.body
-    //     const newUser = await db.query(`INSERT INTO sber_user (fio, phonenumber, email, birthdate, city, inn, password) values ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [fio, phonenumber, email, birthdate, city, inn, password])
-    //     res.json(newUser.rows[0])
-    // }
-    // async getUsers (req, res) {
-    //     const users = await db.query('SELECT * FROM sber_user')
-    //     res.json(users.rows)
-    // }
     async getOneUser (req, res) {
         try {
             const id = req.params.id

@@ -1,0 +1,9 @@
+.wrap {
+    width: 100%;
+}
+
+.container {
+    max-width: 1130px;
+    margin-left: 100px;
+    margin-right: 50px;
+}
