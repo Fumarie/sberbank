@@ -6,7 +6,7 @@ import axios from "axios";
 
 const NewCardSelect = (props) => {
     const [cardData, setCardData] = useState({
-        name: '', type: 0, cvv: '', user_id: 0, balance: 0, validthru: '2025-06-01'
+        name: 'Visa Classic', type: 0, cvv: '', user_id: 0, balance: 0, validthru: '2025-06-01'
     })
 
     const validate = () => {

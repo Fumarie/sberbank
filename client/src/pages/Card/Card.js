@@ -23,6 +23,10 @@ const Card = (props) => {
         setCardData({...cardData, [event.target.name]: event.target.value})
     }
 
+    const validate = () => {
+        return cardData.name.length > 2 && cardData.cvv.length === 3
+    }
+
     const {card} = useSelector(state => state.products)
 
     const deleteCard = async () => {
@@ -77,13 +81,13 @@ const Card = (props) => {
                                                 onChange={changeHandler}
                                             />
                                         </Form.Group>
-                                        <Button style={{marginBottom: 25}} variant="primary" block size="lg" type="submit" >
+                                        <Button style={{marginBottom: 25}} variant="primary" block size="lg" type="submit" disabled={!validate()}>
                                             UPDATE
                                         </Button>
                                     </Form>
                             }
                             <Button variant="danger" onClick={deleteCard}>Удалить карту</Button>
-                            <Button style={{marginLeft: 12}} variant="success" onClick={() => setOpenMenu(!openMenu)}>Изменить</Button>
+                            <Button style={{marginLeft: 12}} variant={!openMenu ? 'success' : 'primary'} onClick={() => setOpenMenu(!openMenu)}>{!openMenu ? 'Изменить' : 'Отмена'}</Button>
                         </div>
                     </div>
                 </div>

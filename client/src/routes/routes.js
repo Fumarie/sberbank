@@ -16,32 +16,33 @@ import NewCard from "../pages/NewCard/NewCard";
 import NewCardSelect from "../pages/NewCard/NewCardSelect";
 
 export const useRoutes = isAuthenticated => {
+    if (isAuthenticated) {
+        return (
+            <>
+                <Aside/>
+                <main className={classes.MainSection}>
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/profile" exact component={Profile}/>
+                    <Route path="/settings" exact component={Settings}/>
+                    <Route path="/mail" exact component={Mail}/>
+                    <Route path="/catalog" exact component={Catalog}/>
+                    <Route path="/payments" exact component={Payments}/>
+                    <Route path="/operations" exact component={Operations}/>
+                    <Route path="/card/:id" exact component={Card}/>
+                    <Route path="/deposit/:id" exact component={Deposit}/>
+                    <Route path="/new/card" exact component={NewCard}/>
+                    <Route path="/new/card/selected" exact component={NewCardSelect}/>
+                    <Redirect to="/"/>
+                </main>
+            </>
+        )
+    }
+
     return (
-        <Switch>
-            {isAuthenticated ?
-                <>
-                    <Aside/>
-                    <main className={classes.MainSection}>
-                        <Route path="/" exact component={Home}/>
-                        <Route path="/profile" exact component={Profile}/>
-                        <Route path="/settings" exact component={Settings}/>
-                        <Route path="/mail" exact component={Mail}/>
-                        <Route path="/catalog" exact component={Catalog}/>
-                        <Route path="/payments" exact component={Payments}/>
-                        <Route path="/operations" exact component={Operations}/>
-                        <Route path="/card/:id" exact component={Card}/>
-                        <Route path="/deposit/:id" exact component={Deposit}/>
-                        <Route path="/new/card" exact component={NewCard}/>
-                        <Route path="/new/card/selected" exact component={NewCardSelect}/>
-                        <Redirect to="/"/>
-                    </main>
-                </>
-                :
-                <>
-                    <Route path="/login" exact component={Login}/>
-                    <Route path="/register" exact component={Login}/>
-                </>
-            }
-        </Switch>
+        <>
+            <Route path="/login" exact component={Login}/>
+            <Route path="/register" exact component={Login}/>
+            <Redirect to="/login"/>>
+        </>
     )
 }

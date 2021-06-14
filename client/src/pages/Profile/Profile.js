@@ -20,9 +20,13 @@ const Profile = (props) => {
         birthdate: '', city: '', inn: ''
     })
 
+    const validate = () => {
+        return profileData.fio.length > 0 && profileData.phonenumber.length > 0 && profileData.email.length > 0 &&
+        profileData.birthdate.length > 0 && profileData.city.length > 0 && profileData.inn.length > 0
+    }
+
     const changeHandler = event => {
         event.preventDefault()
-        console.log(profileData)
         setProfileData({...profileData, [event.target.name]: event.target.value})
     }
 
@@ -76,16 +80,29 @@ const Profile = (props) => {
                                 <div> ИНН: {profile.inn}</div>
                             </>
                             :
-                            <form style={{display: 'flex', flexDirection: 'column', maxWidth: 250}} onSubmit={submitHandler}>
-                                Имя: <input name="fio" style={inputStyle} value={profileData.fio} onChange={changeHandler}/>
-                                Номер телефона: <input name="phonenumber" style={inputStyle} value={profileData.phonenumber} onChange={changeHandler}/>
-                                email: <input name="email" type="email" style={inputStyle} value={profileData.email} onChange={changeHandler}/>
-                                Дата рождения: <input name="birthdate" type="date" style={inputStyle} value={profileData.birthdate} onChange={changeHandler}/>
-                                Город: <input name="city" style={inputStyle} value={profileData.city} onChange={changeHandler}/>
-                                ИНН: <input name="inn" style={inputStyle} value={profileData.inn} onChange={changeHandler}/>
+                            <form style={{display: 'flex', flexDirection: 'column', maxWidth: 250}}
+                                  onSubmit={submitHandler}>
+                                Имя: <input name="fio" style={inputStyle} value={profileData.fio}
+                                            placeholder={profile.fio}
+                                            onChange={changeHandler}/>
+                                Номер телефона: <input name="phonenumber" style={inputStyle}
+                                                       placeholder={profile.phonenumber}
+                                                       value={profileData.phonenumber} onChange={changeHandler}/>
+                                email: <input name="email" type="email" style={inputStyle} value={profileData.email}
+                                              placeholder={profile.email}
+                                              onChange={changeHandler}/>
+                                Дата рождения: <input name="birthdate" type="date" style={inputStyle}
+                                                      placeholder={profile.birthdate}
+                                                      value={profileData.birthdate} onChange={changeHandler}/>
+                                Город: <input name="city" style={inputStyle} value={profileData.city}
+                                              placeholder={profile.city}
+                                              onChange={changeHandler}/>
+                                ИНН: <input name="inn" style={inputStyle} value={profileData.inn}
+                                            placeholder={profile.inn}
+                                            onChange={changeHandler}/>
                                 {openChange &&
                                 <>
-                                    <Button variant="danger" type="submit">Сохранить</Button>
+                                    <Button variant="danger" type="submit" disabled={!validate()}>Сохранить</Button>
                                     <Button style={{marginTop: 6}} variant={!openChange ? 'success' : 'primary'}
                                             onClick={!openChange ? () => setOpenChange(!openChange) : cancelHandler}>{!openChange ? 'Изменить' : 'Отмена'}</Button>
                                 </>
@@ -95,8 +112,9 @@ const Profile = (props) => {
                     </div>
                     {!openChange &&
                     <><Button variant={!openChange ? 'success' : 'primary'}
-                                            onClick={() => setOpenChange(!openChange)}>{!openChange ? 'Изменить' : 'Отмена'}</Button>
-                        <Button style={{marginLeft: 4}} variant={'danger'} onClick={deleteUser}>Удалить пользователя</Button>
+                              onClick={() => setOpenChange(!openChange)}>{!openChange ? 'Изменить' : 'Отмена'}</Button>
+                        <Button style={{marginLeft: 4}} variant={'danger'} onClick={deleteUser}>Удалить
+                            пользователя</Button>
                     </>}
                 </div>
             </div>

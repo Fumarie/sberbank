@@ -13,9 +13,6 @@ const Aside = () => {
     const dispatch = useDispatch()
     const {token, userId} = useContext(AuthContext)
 
-    console.log('token', token)
-    console.log('userId', userId)
-
     useEffect(() => {
         dispatch(getUser(userId, token))
     }, []);

@@ -1,4 +1,4 @@
-import { GET_USER, SET_PROFILE_LOADING } from '../types'
+import { GET_USER, GET_USER_SUM, SET_PROFILE_LOADING } from '../types'
 
 const initialState = {
     profile: {},

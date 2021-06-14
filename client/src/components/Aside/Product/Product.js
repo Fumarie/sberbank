@@ -16,8 +16,6 @@ const Product = ({name}) => {
     const {cards} = useSelector(state => state.products)
     const {id} = useSelector(state => state.profile.profile)
 
-
-    console.log('CARDS', cards)
     const clickHandler = async () => {
         setCollapse(!collapse)
         if (!collapse) {
@@ -54,7 +52,7 @@ const Product = ({name}) => {
                         case 'Карты': {
                             if (state === 'entered') styles = {
                                 ...styles,
-                                maxHeight: cards.length ? ((cards.length * 60) + ((cards.length) * 17) - 9) : 70
+                                maxHeight: cards.length ? ((cards.length * 60) + ((cards.length) * 17) - 9) : 69
                             }
                             return (
                                 <div style={styles}>

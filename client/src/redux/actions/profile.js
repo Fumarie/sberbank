@@ -8,7 +8,7 @@ export const setLoading = () => {
 export const getUser = (id, token) => {
     return async dispatch => {
         try {
-            console.log(token)
+            // console.log(token)
             dispatch(setLoading())
             const user = await axios.get(`http://localhost:8080/api/user/${id}`,{
                 headers: {
@@ -34,5 +34,4 @@ export const getUser = (id, token) => {
             console.log(e)
         }
     }
-
 }

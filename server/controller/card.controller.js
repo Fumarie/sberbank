@@ -53,6 +53,28 @@ class CardController {
             res.status(400).json({message: 'Card deleting error'})
         }
     }
+
+    async getUserSum (req, res) {
+        try {
+            const id = req.params.id
+            const sum = await db.query(`SELECT SUM(balance) from card where user_id = ${id}`)
+            res.json(sum.rows[0].sum)
+        } catch(e) {
+            console.log(e)
+            res.status(400).json({message: 'Getting sum error'})
+        }
+    }
+
+    async getUsersSum (req,res) {
+        try {
+            const sum = await db.query(`SELECT AVG(balance) from card`)
+            console.log(sum.rows[0].avg)
+            res.json(sum.rows[0].avg)
+        } catch (e) {
+            console.log(e)
+            res.status(400).json({message: 'Getting sum error'})
+        }
+    }
 }
 
 module.exports = new CardController()

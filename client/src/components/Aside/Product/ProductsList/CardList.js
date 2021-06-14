@@ -7,7 +7,6 @@ const CardList = () => {
     return (
         <>
             {cards && cards.map((element, index) => {
-                console.log(element)
                 return (<ProductCardItem key={index} product={element} />)
                 // if (name === 'Карты')
                 //     if (name === 'Вклады и счета') return (<ProductDepositItem product={element} key={index}/>)
