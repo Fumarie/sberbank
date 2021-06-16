@@ -17,7 +17,7 @@ class UserController {
     async updateUser (req, res) {
         try {
             const {id, fio, phonenumber, email, birthdate, city, inn} = req.body
-            // const hashPassword = bcrypt.hashSync(password, 5)
+            console.log(req.body)
             const user = await db.query('UPDATE sber_user set fio = $1, phonenumber = $2, email = $3, birthdate = $4, city = $5, inn = $6 where id_user = $7 RETURNING *', [fio, phonenumber, email, birthdate, city, inn, id])
             res.json('success')
         } catch (e) {

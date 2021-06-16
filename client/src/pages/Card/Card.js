@@ -31,7 +31,7 @@ const Card = (props) => {
 
     const deleteCard = async () => {
         try {
-            const data = await axios.delete(`http://localhost:8080/api/card/${props.match.params.id}`).then(response => response.data)
+            await axios.delete(`http://localhost:8080/api/card/${props.match.params.id}`).then(response => response.data)
             window.location.href = `/`
         } catch (e) {
             console.log(e)
@@ -41,7 +41,7 @@ const Card = (props) => {
     const updateCard = async event => {
         event.preventDefault()
         try {
-            const data = await axios.put(`http://localhost:8080/api/card/`, {
+            await axios.put(`http://localhost:8080/api/card/`, {
                 ...cardData, id: props.match.params.id
             }).then(response => response.data)
             window.location.href = `/`

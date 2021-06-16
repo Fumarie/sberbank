@@ -23,8 +23,9 @@ const Home = (props) => {
         <>
             <div>
                 <Header path={props.match.path}/>
-                <div style={{display: 'flex', justifyContent: "center"}}>
-                    <div className="card" style={{width: 300, marginRight: 70}}>
+                <img src={bg} alt="" style={{position: 'absolute', height: 'calc(100vh - 203px)', marginTop: '-65px'}} />
+                <div style={{display: 'flex', maxWidth: 1130, marginLeft: 100}}>
+                    <div className="card" style={{width: 300, marginRight: 70, borderRadius: 8}}>
                         <div className="card-header">
                             Общий баланс по аккаунту
                         </div>
@@ -34,7 +35,7 @@ const Home = (props) => {
                             </blockquote>
                         </div>
                     </div>
-                    <div className="card" style={{width: 300}}>
+                    <div className="card" style={{width: 300, borderRadius: 8}}>
                         <div className="card-header">
                             Средний баланс наших пользователей
                         </div>

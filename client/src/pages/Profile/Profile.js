@@ -27,6 +27,7 @@ const Profile = (props) => {
 
     const changeHandler = event => {
         event.preventDefault()
+        console.log(profileData)
         setProfileData({...profileData, [event.target.name]: event.target.value})
     }
 
@@ -40,8 +41,9 @@ const Profile = (props) => {
 
     const submitHandler = async (event) => {
         event.preventDefault()
-        console.log(profileData)
-        const id = props.match.params.id
+        console.log('update', profileData)
+        const data = JSON.parse(localStorage.getItem('sberbankUserToken'))
+        const id = data.userId
         try {
             const data = await axios.put(`http://localhost:8080/api/user/`, {
                 ...profileData, id
@@ -57,7 +59,7 @@ const Profile = (props) => {
         const object = JSON.parse(localStorage.getItem('sberbankUserToken'))
         console.log(object.userId)
         try {
-            const data = await axios.delete(`http://localhost:8080/api/user/${object.userId}`).then(response => response.data)
+            await axios.delete(`http://localhost:8080/api/user/${object.userId}`).then(response => response.data)
             auth.logout()
             window.location.href = `/login`
         } catch (e) {
